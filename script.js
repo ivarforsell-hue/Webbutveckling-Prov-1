@@ -340,34 +340,35 @@ function visaSektion(namn) {
   }
   
   function visaFraga() {
-    const f = fragorBlandade[nuvarandeIndex];
-    const total = fragorBlandade.length;
-  
-    document.getElementById("fraga-nr").textContent    = nuvarandeIndex + 1;
-    document.getElementById("total-fragor").textContent = total;
-    document.getElementById("fraga-kategori").textContent = f.kategori;
-    document.getElementById("fraga-text").textContent   = f.fraga;
-    document.getElementById("fraga-hint").textContent   = f.hint;
-  
-    const fill = (nuvarandeIndex / total) * 100;
-    document.getElementById("progress-fill").style.width = fill + "%";
-  
-    // Reset svar-area
-    const svarInput = document.getElementById("svar-input");
-    svarInput.value = "";
-    svarInput.disabled = false;
-    svarInput.focus();
-  
-    document.getElementById("kolla-btn").style.display = "inline-block";
-    document.getElementById("svar-area").style.display = "flex";
-  
-    const fb = document.getElementById("feedback-box");
-    fb.classList.add("dold");
-    fb.classList.remove("ratt", "fel");
-  
-    // Enter-tangent
-    svarInput.onkeydown = (e) => { if (e.key === "Enter") kollaSvar(); };
+  const f = fragorBlandade[qIndex];
+  document.getElementById("fraga-nr").textContent = qIndex + 1;
+  document.getElementById("fraga-kategori").textContent = f.kategori;
+  document.getElementById("fraga-text").textContent = f.fraga;
+
+  // Återställ hint
+  const hintDiv = document.getElementById("fraga-hint");
+  const hintBtn = document.getElementById("hint-btn");
+  hintDiv.textContent = f.hint;
+  hintDiv.classList.add("dold");
+
+  // Visa knappen bara om det finns en ledtråd
+  if (f.hint && f.hint.trim() !== "") {
+    hintBtn.classList.remove("dold");
+  } else {
+    hintBtn.classList.add("dold");
   }
+
+  document.getElementById("progress-fill").style.width = (qIndex / fragorBlandade.length * 100) + "%";
+
+  const input = document.getElementById("svar-input");
+  input.value = ""; input.disabled = false; input.focus();
+  document.getElementById("kolla-btn").style.display = "inline-block";
+  document.getElementById("svar-area").style.display = "flex";
+
+  const fb = document.getElementById("feedback-box");
+  fb.classList.add("dold"); fb.classList.remove("ratt","fel");
+  input.onkeydown = e => { if (e.key === "Enter") kollaSvar(); };
+}
   
   function normalisera(str) {
     return str.toLowerCase().trim().replace(/\s+/g, " ");
