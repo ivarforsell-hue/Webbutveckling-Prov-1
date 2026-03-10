@@ -1,6 +1,10 @@
 // ═══════════════════════════════════════
 //  Webb101 – script.js
 // ═══════════════════════════════════════
+function visaHint() {
+  document.getElementById("fraga-hint").classList.remove("dold");
+  document.getElementById("hint-btn").classList.add("dold");
+}
 function toggleEl(el) {
     el.classList.toggle("open");
   }
