@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="sv">
+ 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webb101 – Studieverktyg</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+ 
+<body>
+ 
+  <header>
+    <div class="logo">Webb<span>101</span></div>
+    <nav>
+      <button id="btn-teori" class="nav-btn active" onclick="visaSektion('teori')">📖 Teori</button>
+      <button id="btn-ova" class="nav-btn" onclick="visaSektion('ova')">🎯 Öva</button>
+    </nav>
+  </header>
+ 
+  <!-- ═══════════════════ TEORIDEL ═══════════════════ -->
+  <main id="sektion-teori" class="sektion aktiv">
+ 
+    <div class="hero">
+      <h1>Allt du behöver till provet</h1>
+      <p>Gå igenom teorin nedan, klicka sedan <strong>Öva</strong> för att testa dig.</p>
+    </div>
+ 
+    <section class="kort" id="filer">
+      <h2>📁 Filer &amp; Mappar</h2>
+      <p>Namnge alltid filer/mappar med <strong>lowercase</strong>, utan mellanslag. Använd bindestreck istället.</p>
+      <ul>
+        <li>Startsidan ska heta <code>index.html</code> – webbservern hittar den automatiskt.</li>
+        <li>Stilmall: <code>style.css</code> &nbsp;|&nbsp; Skript: <code>script.js</code></li>
+        <li>Bilder i en mapp t.ex. <code>images/</code></li>
+      </ul>
+      <div class="kodblock"><pre>projekt/
+├── index.html
+├── style.css
+├── script.js
+└── images/
+    └── bild.jpg</pre></div>
+    </section>
+ 
+    <section class="kort" id="grundstruktur">
+      <h2>🏗️ HTML-grundstruktur</h2>
+      <p>Varje sida måste ha <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> och <code>&lt;body&gt;</code>.</p>
+      <div class="kodblock"><pre><span class="c-dt">&lt;!DOCTYPE html&gt;</span>
+<span class="c-tag">&lt;html</span> <span class="c-at">lang</span>=<span class="c-vl">"sv"</span><span class="c-tag">&gt;</span>
+ 
+<span class="c-tag">&lt;head&gt;</span>
+  <span class="c-tag">&lt;title&gt;</span>Titel<span class="c-tag">&lt;/title&gt;</span>
+  <span class="c-tag">&lt;link</span> <span class="c-at">rel</span>=<span class="c-vl">"stylesheet"</span> <span class="c-at">href</span>=<span class="c-vl">"style.css"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;script</span> <span class="c-at">src</span>=<span class="c-vl">"script.js"</span> <span class="c-at">defer</span><span class="c-tag">&gt;&lt;/script&gt;</span>
+<span class="c-tag">&lt;/head&gt;</span>
+ 
+<span class="c-tag">&lt;body&gt;</span>
+  <span class="c-cm">&lt;!-- Innehåll här --&gt;</span>
+<span class="c-tag">&lt;/body&gt;</span>
+ 
+<span class="c-tag">&lt;/html&gt;</span></pre></div>
+      <div class="faktaruta">💡 <strong>defer</strong> = skriptet körs efter att hela HTML:en laddats klart.</div>
+    </section>
+ 
+    <section class="kort" id="syntax">
+      <h2>🔤 Syntax – Normal &amp; Void element</h2>
+      <div class="tva-kol">
+        <div>
+          <h3>Normalt element</h3>
+          <div class="kodblock"><pre><span class="c-tag">&lt;p</span> <span class="c-at">class</span>=<span class="c-vl">"intro"</span><span class="c-tag">&gt;</span>Text<span class="c-tag">&lt;/p&gt;</span></pre></div>
+          <ul>
+            <li><strong>Starttagg:</strong> <code>&lt;p class="intro"&gt;</code></li>
+            <li><strong>Attribut:</strong> <code>class</code> = <code>"intro"</code></li>
+            <li><strong>Innehåll:</strong> Text</li>
+            <li><strong>Sluttagg:</strong> <code>&lt;/p&gt;</code></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Void element (tomt)</h3>
+          <div class="kodblock"><pre><span class="c-tag">&lt;img</span> <span class="c-at">src</span>=<span class="c-vl">"bild.jpg"</span> <span class="c-at">alt</span>=<span class="c-vl">"text"</span><span class="c-tag">&gt;</span>
+<span class="c-tag">&lt;input</span> <span class="c-at">type</span>=<span class="c-vl">"text"</span> <span class="c-at">required</span><span class="c-tag">&gt;</span></pre></div>
+          <ul>
+            <li>Ingen sluttagg!</li>
+            <li><strong>Booleskt attribut:</strong> <code>required</code> – bara närvaron räcker</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="kort" id="element">
+      <h2>🧱 Vanliga HTML-element</h2>
+      <div class="element-grid">
+        <div class="el-rad"><code>h1 h2 h3</code><span>Rubriker – h1 störst</span></div>
+        <div class="el-rad"><code>p</code><span>Stycke</span></div>
+        <div class="el-rad"><code>a</code><span>Länk – attribut: href</span></div>
+        <div class="el-rad"><code>ul ol li</code><span>Oordnad / ordnad lista</span></div>
+        <div class="el-rad"><code>table tr th td</code><span>Tabell / rad / rubrikcell / datacell</span></div>
+        <div class="el-rad"><code>img</code><span>Bild (void) – attribut: src, alt</span></div>
+        <div class="el-rad"><code>div</code><span>Block-behållare</span></div>
+        <div class="el-rad"><code>span</code><span>Inline-behållare</span></div>
+      </div>
+    </section>
+ 
+    <section class="kort" id="entiteter">
+      <h2>🔒 HTML-entiteter</h2>
+      <table class="enkel-tabell">
+        <tr><th>Tecken</th><th>Entitet</th><th>Varför?</th></tr>
+        <tr><td>&lt;</td><td><code>&amp;lt;</code></td><td>Annars tror webbläsaren det är en tagg</td></tr>
+        <tr><td>&gt;</td><td><code>&amp;gt;</code></td><td>Annars tror webbläsaren det är en tagg</td></tr>
+        <tr><td>&amp;</td><td><code>&amp;amp;</code></td><td>Startar en entitet</td></tr>
+      </table>
+    </section>
+ 
+    <section class="kort" id="css-syntax">
+      <h2>🎨 CSS-syntax</h2>
+      <div class="kodblock"><pre><span class="c-sel">h1</span><span class="c-tag">,</span> <span class="c-sel">.rubrik</span> <span class="c-tag">{</span>
+  <span class="c-at">color</span><span class="c-tag">:</span> <span class="c-vl">#333</span><span class="c-tag">;</span>
+  <span class="c-at">margin</span><span class="c-tag">:</span> <span class="c-vl">10px 20px</span><span class="c-tag">;</span>
+<span class="c-tag">}</span></pre></div>
+      <ul>
+        <li><strong>Selektor</strong> – väljer vilket element</li>
+        <li><strong>Deklarationsblock</strong> – allt inom <code>{ }</code></li>
+        <li><strong>Deklaration</strong> – egenskapsnamn + värde, avslutas med <code>;</code></li>
+        <li><strong>Shorthand</strong> – t.ex. <code>margin: 10px 20px</code> = topp/botten | vänster/höger</li>
+      </ul>
+    </section>
+ 
+    <section class="kort" id="selektorer">
+      <h2>🎯 Selektorer</h2>
+      <div class="kodblock"><pre><span class="c-sel">p</span> { }
+<span class="c-sel">.klass</span> { }
+<span class="c-sel">#id</span> { }
+<span class="c-sel">a[href]</span> { }
+<span class="c-sel">div p</span> { }
+<span class="c-sel">div &gt; p</span> { }
+<span class="c-sel">h1 + p</span> { }
+<span class="c-sel">h1 ~ p</span> { }</pre></div>
+      <p>Flera klasser på samma element: <code>&lt;div class="kort stor aktiv"&gt;</code></p>
+    </section>
+ 
+    <section class="kort" id="specificitet">
+      <h2>⚖️ Specificitet &amp; Kaskaden</h2>
+      <p>När regler krockar vinner den med <strong>högst specificitet</strong>:</p>
+      <div class="spec-rad">
+        <div class="spec-box" style="background:#e74c3c">ID<br><code>#id</code><br><small>0,1,0,0</small></div>
+        <div class="spec-box" style="background:#e67e22">Klass / Attribut<br><code>.klass</code><br><small>0,0,1,0</small></div>
+        <div class="spec-box" style="background:#27ae60">Typ<br><code>p</code><br><small>0,0,0,1</small></div>
+      </div>
+      <p>Lika specificitet → <strong>sist i koden vinner</strong>.</p>
+    </section>
+ 
+    <section class="kort" id="pseudo">
+      <h2>🔮 Pseudoklasser &amp; Pseudoelement</h2>
+      <div class="tva-kol">
+        <div>
+          <h3>Pseudoklasser <code>:</code></h3>
+          <div class="kodblock"><pre><span class="c-sel">li:nth-child(2)</span> { }
+<span class="c-sel">li:nth-last-child(1)</span> { }
+<span class="c-sel">p:nth-of-type(odd)</span> { }
+<span class="c-sel">p:nth-last-of-type(2)</span> { }
+<span class="c-sel">p:not(.intro)</span> { }
+<span class="c-sel">:is(h1, h2, h3)</span> { }
+<span class="c-sel">div:has(img)</span> { }</pre></div>
+        </div>
+        <div>
+          <h3>Pseudoelement <code>::</code></h3>
+          <div class="kodblock"><pre><span class="c-sel">p::first-letter</span> { }
+<span class="c-sel">.kort::before</span> {
+  content: <span class="c-vl">"→ "</span>;
+}
+<span class="c-sel">.kort::after</span> {
+  content: <span class="c-vl">" ←"</span>;
+}</pre></div>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="kort" id="block-inline">
+      <h2>📦 Block vs Inline</h2>
+      <div class="tva-kol">
+        <div class="demo-box block-demo">
+          <h3>Block</h3>
+          <p>Tar hela bredden, börjar på ny rad.</p>
+          <p>Exempel: <code>div p h1 ul table</code></p>
+        </div>
+        <div class="demo-box inline-demo">
+          <h3>Inline</h3>
+          <p>Tar bara sitt eget utrymme, stannar i flödet.</p>
+          <p>Exempel: <code>span a strong img</code></p>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="kort" id="boxmodell">
+      <h2>📐 Boxmodellen</h2>
+      <div class="box-wrap">
+        <div class="bm-margin">margin
+          <div class="bm-border">border
+            <div class="bm-padding">padding
+              <div class="bm-content">content</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="kodblock" style="margin-top:1rem"><pre><span class="c-sel">div</span> {
+  <span class="c-at">width</span>: <span class="c-vl">200px</span>;
+  <span class="c-at">padding</span>: <span class="c-vl">10px</span>;
+  <span class="c-at">border</span>: <span class="c-vl">2px solid black</span>;
+  <span class="c-at">margin</span>: <span class="c-vl">20px</span>;
+  <span class="c-at">box-sizing</span>: <span class="c-vl">border-box</span>;
+}</pre></div>
+    </section>
+ 
+    <section class="kort" id="css-variabler">
+      <h2>🎛️ CSS-variabler</h2>
+      <div class="kodblock"><pre><span class="c-sel">:root</span> {
+  <span class="c-at">--primär</span>: <span class="c-vl">#4f46e5</span>;
+  <span class="c-at">--avstånd</span>: <span class="c-vl">1rem</span>;
+}
+<span class="c-sel">button</span> {
+  <span class="c-at">background</span>: <span class="c-vl">var(--primär)</span>;
+  <span class="c-at">padding</span>: <span class="c-vl">var(--avstånd)</span>;
+}</pre></div>
+    </section>
+ 
+    <section class="kort" id="formular">
+      <h2>📝 Formulär &amp; JavaScript</h2>
+      <div class="tva-kol">
+        <div>
+          <h3>HTML</h3>
+          <div class="kodblock"><pre><span class="c-tag">&lt;label</span> <span class="c-at">for</span>=<span class="c-vl">"namn"</span><span class="c-tag">&gt;</span>Namn:<span class="c-tag">&lt;/label&gt;</span>
+<span class="c-tag">&lt;input</span> <span class="c-at">type</span>=<span class="c-vl">"text"</span> <span class="c-at">id</span>=<span class="c-vl">"namn"</span><span class="c-tag">&gt;</span>
+<span class="c-tag">&lt;button&gt;</span>Skicka<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;output</span> <span class="c-at">id</span>=<span class="c-vl">"res"</span><span class="c-tag">&gt;&lt;/output&gt;</span></pre></div>
+        </div>
+        <div>
+          <h3>JavaScript</h3>
+          <div class="kodblock"><pre><span class="c-cm">// Välj element</span>
+<span class="c-at">const</span> el = document.querySelector(<span class="c-vl">"#rubrik"</span>);
+<span class="c-cm">// Ändra innehåll</span>
+el.textContent = <span class="c-vl">"Ny text"</span>;
+<span class="c-cm">// Ändra CSS</span>
+el.style.color = <span class="c-vl">"red"</span>;
+<span class="c-cm">// Skapa element</span>
+<span class="c-at">const</span> ny = document.createElement(<span class="c-vl">"div"</span>);
+document.body.appendChild(ny);
+<span class="c-cm">// Ta bort</span>
+el.remove();
+<span class="c-cm">// Händelse</span>
+btn.addEventListener(<span class="c-vl">"click"</span>, () =&gt; { });
+<span class="c-cm">// Sökparametrar</span>
+<span class="c-at">const</span> p = <span class="c-at">new</span> URLSearchParams(location.search);
+<span class="c-at">const</span> namn = p.get(<span class="c-vl">"namn"</span>);</pre></div>
+        </div>
+      </div>
+    </section>
+ 
+    <div class="ova-cta">
+      <p>Klar med teorin? Dags att testa!</p>
+      <button class="stor-knapp" onclick="visaSektion('ova')">🎯 Börja Öva</button>
+    </div>
+ 
+  </main>
+ 
+  <!-- ═══════════════════ ÖVNINGSDEL ═══════════════════ -->
+  <main id="sektion-ova" class="sektion">
+ 
+    <div class="hero">
+      <h1>Öva inför provet</h1>
+      <p>Fråga <span id="fraga-nr">1</span> av <span id="total-fragor">–</span></p>
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+    </div>
+ 
+    <div id="fraga-container" class="kort fraga-kort">
+      <span id="fraga-kategori" class="kategori-badge"></span>
+      <h2 id="fraga-text"></h2>
+      <div id="fraga-hint" class="hint"></div>
+ 
+      <div id="svar-area">
+        <input type="text" id="svar-input" placeholder="Skriv ditt svar här…" autocomplete="off" />
+        <button id="kolla-btn" onclick="kollaSvar()">Kolla ✓</button>
+      </div>
+ 
+      <div id="feedback-box" class="dold">
+        <p id="feedback-rubrik"></p>
+        <p id="feedback-text"></p>
+        <button id="nasta-btn" onclick="nastaFraga()">Nästa fråga →</button>
+      </div>
+    </div>
+ 
+    <div id="klar-box" class="kort dold klar-kort">
+      <div class="klar-emoji">🎉</div>
+      <h2>Du är klar!</h2>
+      <p id="poang-text"></p>
+      <button class="stor-knapp" onclick="startaOm()">Kör igen 🔄</button>
+      <button class="stor-knapp sekunder" onclick="visaSektion('teori')">📖 Tillbaka till teori</button>
+    </div>
+ 
+  </main>
+ 
+  <footer>
+    <p>Webb101 &mdash; Lycka till på provet! 💪</p>
+  </footer>
+ 
+</body>
+</html>
