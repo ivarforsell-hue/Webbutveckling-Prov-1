@@ -1,18 +1,20 @@
 // ═══════════════════════════════════════
 //  Webb101 – script.js
 // ═══════════════════════════════════════
- 
+function toggleEl(el) {
+    el.classList.toggle("open");
+  }
 // ── Navigation ──────────────────────────
 function visaSektion(namn) {
     document.querySelectorAll(".sektion").forEach(s => s.classList.remove("aktiv"));
     document.getElementById("sektion-" + namn).classList.add("aktiv");
- 
+  
     document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
     document.getElementById("btn-" + namn).classList.add("active");
- 
+  
     if (namn === "ova") initOva();
   }
- 
+  
   // ── Quiz data ────────────────────────────
   const fragor = [
     // Filer & mappar
@@ -30,7 +32,7 @@ function visaSektion(namn) {
       svar: ["lowercase", "små bokstäver", "gemener", "små"],
       forklaring: "Använd alltid lowercase (gemener) och undvik mellanslag. Använd bindestreck (-) istället."
     },
- 
+  
     // HTML grundstruktur
     {
       kategori: "HTML-grundstruktur",
@@ -53,7 +55,7 @@ function visaSektion(namn) {
       svar: ["link", "<link>"],
       forklaring: "<link rel=\"stylesheet\" href=\"style.css\"> placeras i <head> och kopplar in stilmallen."
     },
- 
+  
     // Syntax
     {
       kategori: "HTML-syntax",
@@ -76,7 +78,7 @@ function visaSektion(namn) {
       svar: ["starttagg attribut innehåll sluttagg", "starttagg, attribut, innehåll, sluttagg"],
       forklaring: "Ett normalt element har: Starttagg, Attribut (i starttaggen), Innehåll och Sluttagg."
     },
- 
+  
     // Vanliga element
     {
       kategori: "HTML-element",
@@ -113,7 +115,7 @@ function visaSektion(namn) {
       svar: ["span", "<span>"],
       forklaring: "<span> är en generisk inline-behållare. Används för att stila delar av text."
     },
- 
+  
     // Entiteter
     {
       kategori: "HTML-entiteter",
@@ -129,7 +131,7 @@ function visaSektion(namn) {
       svar: ["&gt;"],
       forklaring: "&gt; är HTML-entiteten för > (greater-than)."
     },
- 
+  
     // CSS syntax
     {
       kategori: "CSS-syntax",
@@ -152,7 +154,7 @@ function visaSektion(namn) {
       svar: ["margin: 10px 20px", "margin: 10px 20px;"],
       forklaring: "margin: 10px 20px; = 10px topp&botten, 20px vänster&höger. Det är shorthand-notation."
     },
- 
+  
     // Selektorer
     {
       kategori: "CSS-selektorer",
@@ -196,7 +198,7 @@ function visaSektion(namn) {
       svar: ["~"],
       forklaring: "h1 ~ p väljer alla <p> som är syskon och kommer efter ett <h1>."
     },
- 
+  
     // Specificitet
     {
       kategori: "Specificitet",
@@ -205,7 +207,7 @@ function visaSektion(namn) {
       svar: ["id", "#id"],
       forklaring: "ID har högst specificitet (0,1,0,0), sedan klass (0,0,1,0), sedan typ (0,0,0,1)."
     },
- 
+  
     // Pseudoklasser
     {
       kategori: "Pseudoklasser",
@@ -221,7 +223,7 @@ function visaSektion(namn) {
       svar: [":not", "not"],
       forklaring: ":not(.intro) väljer alla element som INTE har klassen intro."
     },
- 
+  
     // Pseudoelement
     {
       kategori: "Pseudoelement",
@@ -237,7 +239,7 @@ function visaSektion(namn) {
       svar: ["::before", "before"],
       forklaring: "::before lägger till genererat innehåll före elementet. Kräver content-egenskapen."
     },
- 
+  
     // Block vs Inline
     {
       kategori: "Block vs Inline",
@@ -253,7 +255,7 @@ function visaSektion(namn) {
       svar: ["inline", "inlineelement"],
       forklaring: "<span> är ett inline-element. Det tar bara upp sitt eget utrymme i texten."
     },
- 
+  
     // CSS-variabler
     {
       kategori: "CSS-variabler",
@@ -269,7 +271,7 @@ function visaSektion(namn) {
       svar: [":root", ":root { }"],
       forklaring: ":root representerar HTML-elementet och ger variabler global räckvidd."
     },
- 
+  
     // JavaScript & DOM
     {
       kategori: "JavaScript & DOM",
@@ -307,19 +309,19 @@ function visaSektion(namn) {
       forklaring: "new URLSearchParams(window.location.search) ger åtkomst till URL-parametrar som ?namn=Kalle."
     }
   ];
- 
+  
   // ── Quiz state ───────────────────────────
   let fragorBlandade = [];
   let nuvarandeIndex  = 0;
   let poang           = 0;
   let ovningenStartad = false;
- 
+  
   function initOva() {
     if (ovningenStartad) return;
     ovningenStartad = true;
     startaOm();
   }
- 
+  
   function startaOm() {
     fragorBlandade = blanda([...fragor]);
     nuvarandeIndex = 0;
@@ -328,7 +330,7 @@ function visaSektion(namn) {
     document.getElementById("fraga-container").classList.remove("dold");
     visaFraga();
   }
- 
+  
   function blanda(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -336,71 +338,71 @@ function visaSektion(namn) {
     }
     return arr;
   }
- 
+  
   function visaFraga() {
     const f = fragorBlandade[nuvarandeIndex];
     const total = fragorBlandade.length;
- 
+  
     document.getElementById("fraga-nr").textContent    = nuvarandeIndex + 1;
     document.getElementById("total-fragor").textContent = total;
     document.getElementById("fraga-kategori").textContent = f.kategori;
     document.getElementById("fraga-text").textContent   = f.fraga;
     document.getElementById("fraga-hint").textContent   = f.hint;
- 
+  
     const fill = (nuvarandeIndex / total) * 100;
     document.getElementById("progress-fill").style.width = fill + "%";
- 
+  
     // Reset svar-area
     const svarInput = document.getElementById("svar-input");
     svarInput.value = "";
     svarInput.disabled = false;
     svarInput.focus();
- 
+  
     document.getElementById("kolla-btn").style.display = "inline-block";
     document.getElementById("svar-area").style.display = "flex";
- 
+  
     const fb = document.getElementById("feedback-box");
     fb.classList.add("dold");
     fb.classList.remove("ratt", "fel");
- 
+  
     // Enter-tangent
     svarInput.onkeydown = (e) => { if (e.key === "Enter") kollaSvar(); };
   }
- 
+  
   function normalisera(str) {
     return str.toLowerCase().trim().replace(/\s+/g, " ");
   }
- 
+  
   function kollaSvar() {
     const input = document.getElementById("svar-input");
     const svar  = normalisera(input.value);
     if (!svar) return;
- 
+  
     const f = fragorBlandade[nuvarandeIndex];
     const ratt = f.svar.some(s => normalisera(s) === svar ||
       normalisera(s).includes(svar) ||
       svar.includes(normalisera(s).split(" ")[0])
     );
- 
+  
     // Disable input
     input.disabled = true;
     document.getElementById("kolla-btn").style.display = "none";
- 
+  
     const fb = document.getElementById("feedback-box");
     fb.classList.remove("dold", "ratt", "fel");
     fb.classList.add(ratt ? "ratt" : "fel");
- 
+  
     document.getElementById("feedback-rubrik").textContent = ratt
       ? "✅ Rätt!" : "❌ Inte riktigt...";
- 
+  
     const rattSvar = f.svar[0];
     document.getElementById("feedback-text").textContent = ratt
       ? f.forklaring
       : `Rätt svar: ${rattSvar}\n\n${f.forklaring}`;
- 
+  
     if (ratt) poang++;
   }
- 
+  
   function nastaFraga() {
     nuvarandeIndex++;
     if (nuvarandeIndex >= fragorBlandade.length) {
@@ -409,19 +411,20 @@ function visaSektion(namn) {
       visaFraga();
     }
   }
- 
+  
   function visaKlar() {
     document.getElementById("fraga-container").classList.add("dold");
     const klarBox = document.getElementById("klar-box");
     klarBox.classList.remove("dold");
- 
+  
     const total = fragorBlandade.length;
     const procent = Math.round((poang / total) * 100);
     let emoji = procent >= 80 ? "🔥" : procent >= 60 ? "👍" : "📖";
- 
+  
     document.getElementById("poang-text").textContent =
       `Du fick ${poang} av ${total} rätt (${procent}%) ${emoji}`;
- 
+  
     document.getElementById("progress-fill").style.width = "100%";
     ovningenStartad = false;
   }
+  
