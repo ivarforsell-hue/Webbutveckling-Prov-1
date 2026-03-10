@@ -20,299 +20,299 @@ function visaSektion(namn) {
   }
   
   // ── Quiz data ────────────────────────────
-  const fragor = [
-    // Filer & mappar
-    {
-      kategori: "Filer & Mappar",
-      fraga: "Vad ska startsidan alltid heta?",
-      hint: "",
-      svar: ["index.html"],
-      forklaring: "Webbservern letar automatiskt efter en fil som heter index.html i en mapp."
-    },
-    {
-      kategori: "Filer & Mappar",
-      fraga: "Hur ska filnamn skrivas – med stora eller små bokstäver?",
-      hint: "",
-      svar: ["lowercase", "små bokstäver", "gemener", "små"],
-      forklaring: "Använd alltid lowercase (gemener) och undvik mellanslag. Använd bindestreck (-) istället."
-    },
-  
-    // HTML grundstruktur
-    {
-      kategori: "HTML-grundstruktur",
-      fraga: "Vad är den allra första raden i ett HTML-dokument?",
-      hint: "Börjar med <! ...",
-      svar: ["<!doctype html>", "<!DOCTYPE html>"],
-      forklaring: "<!DOCTYPE html> talar om för webbläsaren att det är ett HTML5-dokument."
-    },
-    {
-      kategori: "HTML-grundstruktur",
-      fraga: "Vilket attribut använder man på <script> för att den ska köras EFTER HTML:en laddats?",
-      hint: "Ett booleskt attribut...",
-      svar: ["defer"],
-      forklaring: "defer gör att skriptet körs efter att HTML:en är tolkad. Utan defer kan JS köras innan elementen finns."
-    },
-    {
-      kategori: "HTML-grundstruktur",
-      fraga: "Vilket element kopplar in en CSS-fil till HTML-sidan?",
-      hint: "<l... rel=\"stylesheet\" href=\"style.css\">",
-      svar: ["link", "<link>"],
-      forklaring: "<link rel=\"stylesheet\" href=\"style.css\"> placeras i <head> och kopplar in stilmallen."
-    },
-  
-    // Syntax
-    {
-      kategori: "HTML-syntax",
-      fraga: "Vad kallas ett element som INTE har en sluttagg?",
-      hint: "Engelskt ord används...",
-      svar: ["void element", "void", "tomt element"],
-      forklaring: "Void elements (tomma element) som <img>, <input>, <br> har ingen sluttagg och inget innehåll."
-    },
-    {
-      kategori: "HTML-syntax",
-      fraga: "Vad kallas ett attribut som bara behöver vara närvarande, utan värde? T.ex. 'required'",
-      hint: "Tänk sant/falskt...",
-      svar: ["booleskt attribut", "boolean attribut", "booleskt", "boolean"],
-      forklaring: "Booleska attribut som required, disabled, checked behöver inget värde – närvaron räcker."
-    },
-    {
-      kategori: "HTML-syntax",
-      fraga: "Vilka fyra delar har ett normalt HTML-element?",
-      hint: "Starttagg, ___, ___, Sluttagg",
-      svar: ["starttagg attribut innehåll sluttagg", "starttagg, attribut, innehåll, sluttagg"],
-      forklaring: "Ett normalt element har: Starttagg, Attribut (i starttaggen), Innehåll och Sluttagg."
-    },
-  
-    // Vanliga element
-    {
-      kategori: "HTML-element",
-      fraga: "Vilket element används för en OORDNAD lista (med punkter)?",
-      hint: "u...",
-      svar: ["ul", "<ul>"],
-      forklaring: "<ul> = unordered list. Varje punkt är ett <li>-element inuti."
-    },
-    {
-      kategori: "HTML-element",
-      fraga: "Vilket element används för en ORDNAD lista (med siffror)?",
-      hint: "o...",
-      svar: ["ol", "<ol>"],
-      forklaring: "<ol> = ordered list. Varje objekt är ett <li>-element inuti."
-    },
-    {
-      kategori: "HTML-element",
-      fraga: "Vilket element representerar en rubrikcell i en tabell?",
-      hint: "t...",
-      svar: ["th", "<th>"],
-      forklaring: "<th> = table header. Används för rubrikceller i en tabell, till skillnad från <td> (data)."
-    },
-    {
-      kategori: "HTML-element",
-      fraga: "Vilket element är en block-behållare utan semantisk betydelse?",
-      hint: "d...",
-      svar: ["div", "<div>"],
-      forklaring: "<div> är en generisk block-behållare. Används för att gruppera element för styling."
-    },
-    {
-      kategori: "HTML-element",
-      fraga: "Vilket element är en INLINE-behållare utan semantisk betydelse?",
-      hint: "s...",
-      svar: ["span", "<span>"],
-      forklaring: "<span> är en generisk inline-behållare. Används för att stila delar av text."
-    },
-  
-    // Entiteter
-    {
-      kategori: "HTML-entiteter",
-      fraga: "Hur skriver du tecknet < i HTML-kod (utan att starta en tagg)?",
-      hint: "&...",
-      svar: ["&lt;"],
-      forklaring: "&lt; är HTML-entiteten för < (less-than). Utan den tror webbläsaren att det är en tagg."
-    },
-    {
-      kategori: "HTML-entiteter",
-      fraga: "Hur skriver du tecknet > i HTML-kod?",
-      hint: "&...",
-      svar: ["&gt;"],
-      forklaring: "&gt; är HTML-entiteten för > (greater-than)."
-    },
-  
-    // CSS syntax
-    {
-      kategori: "CSS-syntax",
-      fraga: "Vad kallas delen inom { } i en CSS-regel?",
-      hint: "Dekla...",
-      svar: ["deklarationsblock", "declarations block"],
-      forklaring: "Allt inom { } kallas deklarationsblock. Det innehåller en eller flera deklarationer."
-    },
-    {
-      kategori: "CSS-syntax",
-      fraga: "Vad kallas en CSS-rad som t.ex. 'color: red;'?",
-      hint: "Dekla...",
-      svar: ["deklaration"],
-      forklaring: "En deklaration består av egenskapsnamn + värde, t.ex. color: red; och avslutas med semikolon."
-    },
-    {
-      kategori: "CSS-syntax",
-      fraga: "Hur skriver man en CSS-shorthand för margin med 10px topp/botten och 20px vänster/höger?",
-      hint: "margin: __ __;",
-      svar: ["margin: 10px 20px", "margin: 10px 20px;"],
-      forklaring: "margin: 10px 20px; = 10px topp&botten, 20px vänster&höger. Det är shorthand-notation."
-    },
-  
-    // Selektorer
-    {
-      kategori: "CSS-selektorer",
-      fraga: "Hur selekterar du alla element med klassen 'rubrik' i CSS?",
-      hint: "Börjar med en punkt...",
-      svar: [".rubrik", ".rubrik { }"],
-      forklaring: ".klass är en klassselektor. Punkten (.) framför namnet väljer alla element med den klassen."
-    },
-    {
-      kategori: "CSS-selektorer",
-      fraga: "Hur selekterar du ett element med id='huvud' i CSS?",
-      hint: "Börjar med #...",
-      svar: ["#huvud", "#huvud { }"],
-      forklaring: "#id är en id-selektor. Brädgården (#) väljer ett specifikt element med det id:t."
-    },
-    {
-      kategori: "CSS-selektorer",
-      fraga: "Vilken kombinator väljer DIREKTA barn (child)?",
-      hint: "Ett enda tecken...",
-      svar: [">"],
-      forklaring: "div > p väljer bara <p> som är direkta barn till <div>, inte djupare avkomlingar."
-    },
-    {
-      kategori: "CSS-selektorer",
-      fraga: "Vilken kombinator väljer avkomlingar (descendant)?",
-      hint: "Det enklaste möjliga...",
-      svar: ["mellanslag", " ", "space"],
-      forklaring: "div p (med mellanslag) väljer alla <p> inuti en <div>, oavsett djup."
-    },
-    {
-      kategori: "CSS-selektorer",
-      fraga: "Vilken kombinator väljer NÄSTA syskon (next-sibling)?",
-      hint: "Ett tecken efter h1...",
-      svar: ["+"],
-      forklaring: "h1 + p väljer den <p> som kommer direkt efter ett <h1>."
-    },
-    {
-      kategori: "CSS-selektorer",
-      fraga: "Vilken kombinator väljer ALLA efterkommande syskon?",
-      hint: "h1 _ p",
-      svar: ["~"],
-      forklaring: "h1 ~ p väljer alla <p> som är syskon och kommer efter ett <h1>."
-    },
-  
-    // Specificitet
-    {
-      kategori: "Specificitet",
-      fraga: "Vilket har högst specificitet: ID, klass eller typ?",
-      hint: "#id vs .klass vs p",
-      svar: ["id", "#id"],
-      forklaring: "ID har högst specificitet (0,1,0,0), sedan klass (0,0,1,0), sedan typ (0,0,0,1)."
-    },
-  
-    // Pseudoklasser
-    {
-      kategori: "Pseudoklasser",
-      fraga: "Vilken pseudoklass väljer det N:te barnet?",
-      hint: ":nth-...",
-      svar: [":nth-child", "nth-child"],
-      forklaring: ":nth-child(n) väljer det n:te barnet. T.ex. li:nth-child(2) väljer den andra <li>."
-    },
-    {
-      kategori: "Pseudoklasser",
-      fraga: "Vilken pseudoklass UTESLUTER element? T.ex. välj alla p utom .intro",
-      hint: ":n...",
-      svar: [":not", "not"],
-      forklaring: ":not(.intro) väljer alla element som INTE har klassen intro."
-    },
-  
-    // Pseudoelement
-    {
-      kategori: "Pseudoelement",
-      fraga: "Vilket pseudoelement stilsätter det FÖRSTA tecknet i ett textstycke?",
-      hint: "::first-...",
-      svar: ["::first-letter", "first-letter"],
-      forklaring: "p::first-letter väljer bara det första tecknet i ett <p>-element."
-    },
-    {
-      kategori: "Pseudoelement",
-      fraga: "Vilket pseudoelement lägger till innehåll FÖRE ett element?",
-      hint: "::b...",
-      svar: ["::before", "before"],
-      forklaring: "::before lägger till genererat innehåll före elementet. Kräver content-egenskapen."
-    },
-  
-    // Block vs Inline
-    {
-      kategori: "Block vs Inline",
-      fraga: "Är <div> ett block- eller inline-element?",
-      hint: "",
-      svar: ["block", "blockelement"],
-      forklaring: "<div> är ett block-element. Det tar upp hela bredden och börjar på ny rad."
-    },
-    {
-      kategori: "Block vs Inline",
-      fraga: "Är <span> ett block- eller inline-element?",
-      hint: "",
-      svar: ["inline", "inlineelement"],
-      forklaring: "<span> är ett inline-element. Det tar bara upp sitt eget utrymme i texten."
-    },
-  
-    // CSS-variabler
-    {
-      kategori: "CSS-variabler",
-      fraga: "Hur ANVÄNDER man en CSS-variabel som heter --primär?",
-      hint: "var(...)",
-      svar: ["var(--primär)", "var(--primaer)"],
-      forklaring: "CSS-variabler används med var(--variabelnamn). De definieras vanligtvis i :root { }."
-    },
-    {
-      kategori: "CSS-variabler",
-      fraga: "I vilket selektor brukar man DEFINIERA CSS-variabler för hela sidan?",
-      hint: "Rot-elementet...",
-      svar: [":root", ":root { }"],
-      forklaring: ":root representerar HTML-elementet och ger variabler global räckvidd."
-    },
-  
-    // JavaScript & DOM
-    {
-      kategori: "JavaScript & DOM",
-      fraga: "Vilket JS-kommando väljer ett element med id='titel'?",
-      hint: "document.querySelector(...)",
-      svar: ["document.queryselector(\"#titel\")", "document.querySelector('#titel')", "document.querySelector(\"#titel\")"],
-      forklaring: "document.querySelector(\"#titel\") returnerar det första elementet med id=\"titel\"."
-    },
-    {
-      kategori: "JavaScript & DOM",
-      fraga: "Hur ändrar du textinnehållet i ett element med JavaScript?",
-      hint: "element. ... = \"text\"",
-      svar: ["textcontent", ".textcontent", "element.textContent"],
-      forklaring: "element.textContent = \"Ny text\" byter ut textinnehållet i elementet."
-    },
-    {
-      kategori: "JavaScript & DOM",
-      fraga: "Vilket JS-kommando SKAPAR ett nytt element?",
-      hint: "document.create...",
-      svar: ["document.createelement", "document.createElement(\"div\")"],
-      forklaring: "document.createElement(\"div\") skapar ett nytt <div>-element (utan att lägga till det i DOM:en)."
-    },
-    {
-      kategori: "JavaScript & DOM",
-      fraga: "Hur lyssnar man på ett klick på ett element med JS?",
-      hint: "element.addEventListener(...)",
-      svar: ["addeventlistener", "addEventListener", "addEventListener(\"click\", ...)"],
-      forklaring: "element.addEventListener(\"click\", funktion) kopplar en händelselyssnare till elementet."
-    },
-    {
-      kategori: "JavaScript & DOM",
-      fraga: "Vilken klass används för att avkoda sökparametrar från en URL?",
-      hint: "new URL...",
-      svar: ["urlsearchparams", "URLSearchParams", "new URLSearchParams"],
-      forklaring: "new URLSearchParams(window.location.search) ger åtkomst till URL-parametrar som ?namn=Kalle."
-    }
-  ];
+const fragor = [
+  // Filer & mappar
+  {
+    kategori: "Filer & Mappar",
+    fraga: "Vad ska startsidan alltid heta?",
+    hint: "Tänk på vad en webbserver letar efter automatiskt...",
+    svar: ["index.html"],
+    forklaring: "Webbservern letar automatiskt efter en fil som heter index.html i en mapp."
+  },
+  {
+    kategori: "Filer & Mappar",
+    fraga: "Hur ska filnamn skrivas – med stora eller små bokstäver?",
+    hint: "Det motsatta från hur du skriver i början av en mening...",
+    svar: ["lowercase", "små bokstäver", "gemener", "små"],
+    forklaring: "Använd alltid lowercase (gemener) och undvik mellanslag. Använd bindestreck (-) istället."
+  },
+
+  // HTML grundstruktur
+  {
+    kategori: "HTML-grundstruktur",
+    fraga: "Vad är den allra första raden i ett HTML-dokument?",
+    hint: "Det är inte ett vanligt element – det börjar med ett utropstecken...",
+    svar: ["<!doctype html>", "<!DOCTYPE html>"],
+    forklaring: "<!DOCTYPE html> talar om för webbläsaren att det är ett HTML5-dokument."
+  },
+  {
+    kategori: "HTML-grundstruktur",
+    fraga: "Vilket attribut använder man på script-elementet för att den ska köras EFTER HTML:en laddats?",
+    hint: "Det är ett booleskt attribut – du behöver inte ge det något värde...",
+    svar: ["defer"],
+    forklaring: "defer gör att skriptet körs efter att HTML:en är tolkad. Utan defer kan JS köras innan elementen finns."
+  },
+  {
+    kategori: "HTML-grundstruktur",
+    fraga: "Vilket element kopplar in en CSS-fil till HTML-sidan?",
+    hint: "Det sitter i head och har ett rel-attribut...",
+    svar: ["link", "<link>"],
+    forklaring: "<link rel='stylesheet' href='style.css'> placeras i <head> och kopplar in stilmallen."
+  },
+
+  // Syntax
+  {
+    kategori: "HTML-syntax",
+    fraga: "Vad kallas ett element som INTE har en sluttagg?",
+    hint: "img och input är exempel – vad kallas den typen på engelska?",
+    svar: ["void element", "void", "tomt element"],
+    forklaring: "Void elements som <img>, <input>, <br> har ingen sluttagg och inget innehåll."
+  },
+  {
+    kategori: "HTML-syntax",
+    fraga: "Vad kallas ett attribut som bara behöver vara närvarande utan värde, t.ex. 'required'?",
+    hint: "Tänk sant eller falskt – antingen finns det eller inte...",
+    svar: ["booleskt attribut", "boolean attribut", "booleskt", "boolean"],
+    forklaring: "Booleska attribut som required, disabled, checked behöver inget värde – närvaron räcker."
+  },
+  {
+    kategori: "HTML-syntax",
+    fraga: "Vilka fyra delar har ett normalt HTML-element?",
+    hint: "Det börjar och slutar med något, har text i mitten och extra info i öppningen...",
+    svar: ["starttagg attribut innehåll sluttagg", "starttagg, attribut, innehåll, sluttagg"],
+    forklaring: "Ett normalt element har: Starttagg, Attribut (i starttaggen), Innehåll och Sluttagg."
+  },
+
+  // Vanliga element
+  {
+    kategori: "HTML-element",
+    fraga: "Vilket element används för en OORDNAD lista med punkter?",
+    hint: "Tänk 'unordered' – första bokstaven...",
+    svar: ["ul", "<ul>"],
+    forklaring: "<ul> = unordered list. Varje punkt är ett <li>-element inuti."
+  },
+  {
+    kategori: "HTML-element",
+    fraga: "Vilket element används för en ORDNAD lista med siffror?",
+    hint: "Tänk 'ordered' – första bokstaven...",
+    svar: ["ol", "<ol>"],
+    forklaring: "<ol> = ordered list. Varje objekt är ett <li>-element inuti."
+  },
+  {
+    kategori: "HTML-element",
+    fraga: "Vilket element representerar en rubrikcell i en tabell?",
+    hint: "Två bokstäver – t och sedan den första bokstaven i 'header'...",
+    svar: ["th", "<th>"],
+    forklaring: "<th> = table header. Används för rubrikceller, till skillnad från <td> (data)."
+  },
+  {
+    kategori: "HTML-element",
+    fraga: "Vilket element är en block-behållare utan semantisk betydelse?",
+    hint: "Tre bokstäver, börjar på d – används överallt för layout...",
+    svar: ["div", "<div>"],
+    forklaring: "<div> är en generisk block-behållare. Används för att gruppera element för styling."
+  },
+  {
+    kategori: "HTML-element",
+    fraga: "Vilket element är en INLINE-behållare utan semantisk betydelse?",
+    hint: "Fyra bokstäver, börjar på s – används inuti text...",
+    svar: ["span", "<span>"],
+    forklaring: "<span> är en generisk inline-behållare. Används för att stila delar av text."
+  },
+
+  // Entiteter
+  {
+    kategori: "HTML-entiteter",
+    fraga: "Hur skriver du tecknet < i HTML utan att starta en tagg?",
+    hint: "Det börjar med & och slutar med semikolon – 'less than'...",
+    svar: ["&lt;"],
+    forklaring: "&lt; är HTML-entiteten för <. Utan den tror webbläsaren att det är en tagg."
+  },
+  {
+    kategori: "HTML-entiteter",
+    fraga: "Hur skriver du tecknet > i HTML?",
+    hint: "Som förra frågan fast 'greater than'...",
+    svar: ["&gt;"],
+    forklaring: "&gt; är HTML-entiteten för >."
+  },
+
+  // CSS syntax
+  {
+    kategori: "CSS-syntax",
+    fraga: "Vad kallas delen inom { } i en CSS-regel?",
+    hint: "Det 'deklarerar' vad som ska gälla – block av...",
+    svar: ["deklarationsblock", "declarations block"],
+    forklaring: "Allt inom { } kallas deklarationsblock. Det innehåller en eller flera deklarationer."
+  },
+  {
+    kategori: "CSS-syntax",
+    fraga: "Vad kallas en CSS-rad som t.ex. 'color: red;'?",
+    hint: "En enda rad med egenskapsnamn och värde – en...",
+    svar: ["deklaration"],
+    forklaring: "En deklaration består av egenskapsnamn + värde, t.ex. color: red; avslutas med semikolon."
+  },
+  {
+    kategori: "CSS-syntax",
+    fraga: "Hur skriver man en CSS-shorthand för margin med 10px topp/botten och 20px vänster/höger?",
+    hint: "Två värden separerade med mellanslag – först vertikalt, sedan horisontellt...",
+    svar: ["margin: 10px 20px", "margin: 10px 20px;"],
+    forklaring: "margin: 10px 20px; = 10px topp&botten, 20px vänster&höger."
+  },
+
+  // Selektorer
+  {
+    kategori: "CSS-selektorer",
+    fraga: "Hur selekterar du alla element med klassen 'rubrik' i CSS?",
+    hint: "Det är ett tecken framför klassnamnet – vad sätter du före 'rubrik'?",
+    svar: [".rubrik", ".rubrik { }"],
+    forklaring: ".klass är en klassselektor. Punkten (.) framför namnet väljer alla element med den klassen."
+  },
+  {
+    kategori: "CSS-selektorer",
+    fraga: "Hur selekterar du ett element med id='huvud' i CSS?",
+    hint: "Det är ett annat tecken än klassen – tänk brädgård...",
+    svar: ["#huvud", "#huvud { }"],
+    forklaring: "#id är en id-selektor. # väljer ett specifikt element med det id:t."
+  },
+  {
+    kategori: "CSS-selektorer",
+    fraga: "Vilken kombinator väljer DIREKTA barn men inte djupare avkomlingar?",
+    hint: "Ett enda tecken som ser ut som en pil...",
+    svar: [">"],
+    forklaring: "div > p väljer bara <p> som är direkta barn till <div>, inte djupare avkomlingar."
+  },
+  {
+    kategori: "CSS-selektorer",
+    fraga: "Vilken kombinator väljer avkomlingar på alla nivåer?",
+    hint: "Det enklaste möjliga tecknet – du trycker det utan att hålla shift...",
+    svar: ["mellanslag", " ", "space"],
+    forklaring: "div p (med mellanslag) väljer alla <p> inuti en <div>, oavsett djup."
+  },
+  {
+    kategori: "CSS-selektorer",
+    fraga: "Vilken kombinator väljer elementet som kommer DIREKT efter ett annat syskon?",
+    hint: "Ett plustecken – h1 _ p...",
+    svar: ["+"],
+    forklaring: "h1 + p väljer den <p> som kommer direkt efter ett <h1>."
+  },
+  {
+    kategori: "CSS-selektorer",
+    fraga: "Vilken kombinator väljer ALLA efterkommande syskon, inte bara det nästa?",
+    hint: "En tilde – ser ut som en liten våg...",
+    svar: ["~"],
+    forklaring: "h1 ~ p väljer alla <p> som är syskon och kommer efter ett <h1>."
+  },
+
+  // Specificitet
+  {
+    kategori: "Specificitet",
+    fraga: "Vilket har högst specificitet: ID, klass eller typ?",
+    hint: "Vilket är mest specifikt – att peka på en person med namn, titel eller yrke?",
+    svar: ["id", "#id"],
+    forklaring: "ID har högst specificitet (0,1,0,0), sedan klass (0,0,1,0), sedan typ (0,0,0,1)."
+  },
+
+  // Pseudoklasser
+  {
+    kategori: "Pseudoklasser",
+    fraga: "Vilken pseudoklass väljer det N:te barnet?",
+    hint: "Börjar med kolon och ordet 'nth' – tänk 'number-th child'...",
+    svar: [":nth-child", "nth-child"],
+    forklaring: ":nth-child(n) väljer det n:te barnet. T.ex. li:nth-child(2) väljer den andra <li>."
+  },
+  {
+    kategori: "Pseudoklasser",
+    fraga: "Vilken pseudoklass UTESLUTER element – t.ex. välj alla p utom .intro?",
+    hint: "Tänk på det svenska ordet 'inte' fast på engelska...",
+    svar: [":not", "not"],
+    forklaring: ":not(.intro) väljer alla element som INTE har klassen intro."
+  },
+
+  // Pseudoelement
+  {
+    kategori: "Pseudoelement",
+    fraga: "Vilket pseudoelement stilsätter det FÖRSTA tecknet i ett textstycke?",
+    hint: "Dubbla kolon och sedan 'first' och vad ett tecken kallas på engelska...",
+    svar: ["::first-letter", "first-letter"],
+    forklaring: "p::first-letter väljer bara det första tecknet i ett <p>-element."
+  },
+  {
+    kategori: "Pseudoelement",
+    fraga: "Vilket pseudoelement lägger till innehåll FÖRE ett element?",
+    hint: "Dubbla kolon och det engelska ordet för 'innan'...",
+    svar: ["::before", "before"],
+    forklaring: "::before lägger till genererat innehåll före elementet. Kräver content-egenskapen."
+  },
+
+  // Block vs Inline
+  {
+    kategori: "Block vs Inline",
+    fraga: "Är div ett block- eller inline-element?",
+    hint: "Det tar upp hela bredden och trycker ner nästa element – som ett hus som tar hela tomten...",
+    svar: ["block", "blockelement"],
+    forklaring: "<div> är ett block-element. Det tar upp hela bredden och börjar på ny rad."
+  },
+  {
+    kategori: "Block vs Inline",
+    fraga: "Är span ett block- eller inline-element?",
+    hint: "Det stannar i texten som ett ord bland andra ord...",
+    svar: ["inline", "inlineelement"],
+    forklaring: "<span> är ett inline-element. Det tar bara upp sitt eget utrymme i texten."
+  },
+
+  // CSS-variabler
+  {
+    kategori: "CSS-variabler",
+    fraga: "Hur ANVÄNDER man en CSS-variabel som heter --primär?",
+    hint: "Det är en funktion med tre bokstäver som lindar in variabelnamnet...",
+    svar: ["var(--primär)", "var(--primaer)"],
+    forklaring: "CSS-variabler används med var(--variabelnamn). De definieras vanligtvis i :root { }."
+  },
+  {
+    kategori: "CSS-variabler",
+    fraga: "I vilket selektor brukar man DEFINIERA CSS-variabler för hela sidan?",
+    hint: "Det representerar hela HTML-dokumentets rot – ett kolon och ett engelskt ord...",
+    svar: [":root", ":root { }"],
+    forklaring: ":root representerar HTML-elementet och ger variabler global räckvidd."
+  },
+
+  // JavaScript & DOM
+  {
+    kategori: "JavaScript & DOM",
+    fraga: "Vilket JS-kommando väljer ett element med id='titel'?",
+    hint: "document punkt något med 'query' i namnet, sedan #titel i citattecken...",
+    svar: ["document.queryselector(\"#titel\")", "document.querySelector('#titel')", "document.querySelector(\"#titel\")"],
+    forklaring: "document.querySelector(\"#titel\") returnerar det första elementet med id=\"titel\"."
+  },
+  {
+    kategori: "JavaScript & DOM",
+    fraga: "Vilken egenskap ändrar textinnehållet i ett element med JavaScript?",
+    hint: "Två ord ihopskrivna – 'text' och vad ett innehåll kallas...",
+    svar: ["textcontent", ".textcontent", "element.textContent"],
+    forklaring: "element.textContent = 'Ny text' byter ut textinnehållet i elementet."
+  },
+  {
+    kategori: "JavaScript & DOM",
+    fraga: "Vilket JS-kommando SKAPAR ett nytt element men lägger inte till det i sidan?",
+    hint: "document punkt 'create' och sedan vad man kallar ett HTML-element...",
+    svar: ["document.createelement", "document.createElement(\"div\")"],
+    forklaring: "document.createElement('div') skapar ett nytt element utan att lägga till det i DOM:en."
+  },
+  {
+    kategori: "JavaScript & DOM",
+    fraga: "Vilket metodnamn används för att lyssna på händelser som klick?",
+    hint: "Tre ord ihopskrivna – 'add', 'event' och 'listener'...",
+    svar: ["addeventlistener", "addEventListener", "addEventListener(\"click\", ...)"],
+    forklaring: "element.addEventListener('click', funktion) kopplar en händelselyssnare till elementet."
+  },
+  {
+    kategori: "JavaScript & DOM",
+    fraga: "Vilken klass används för att avkoda sökparametrar från en URL?",
+    hint: "Tre ord utan mellanslag – URL, Search, Params...",
+    svar: ["urlsearchparams", "URLSearchParams", "new URLSearchParams"],
+    forklaring: "new URLSearchParams(window.location.search) ger åtkomst till URL-parametrar som ?namn=Kalle."
+  }
+];
   
   // ── Quiz state ───────────────────────────
   let fragorBlandade = [];
