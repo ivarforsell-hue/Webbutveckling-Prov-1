@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
- 
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
- 
+
 <body>
- 
+
   <header>
     <div class="logo">Webb<span>101</span></div>
     <nav>
@@ -18,15 +18,15 @@
       <button id="btn-ova" class="nav-btn" onclick="visaSektion('ova')">🎯 Öva</button>
     </nav>
   </header>
- 
+
   <!-- ═══════════════════ TEORIDEL ═══════════════════ -->
   <main id="sektion-teori" class="sektion aktiv">
- 
+
     <div class="hero">
       <h1>Allt du behöver till provet</h1>
       <p>Gå igenom teorin nedan, klicka sedan <strong>Öva</strong> för att testa dig.</p>
     </div>
- 
+
     <section class="kort" id="filer">
       <h2>📁 Filer &amp; Mappar</h2>
       <p>Namnge alltid filer/mappar med <strong>lowercase</strong>, utan mellanslag. Använd bindestreck istället.</p>
@@ -42,27 +42,27 @@
 └── images/
     └── bild.jpg</pre></div>
     </section>
- 
+
     <section class="kort" id="grundstruktur">
       <h2>🏗️ HTML-grundstruktur</h2>
       <p>Varje sida måste ha <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> och <code>&lt;body&gt;</code>.</p>
       <div class="kodblock"><pre><span class="c-dt">&lt;!DOCTYPE html&gt;</span>
 <span class="c-tag">&lt;html</span> <span class="c-at">lang</span>=<span class="c-vl">"sv"</span><span class="c-tag">&gt;</span>
- 
+
 <span class="c-tag">&lt;head&gt;</span>
   <span class="c-tag">&lt;title&gt;</span>Titel<span class="c-tag">&lt;/title&gt;</span>
   <span class="c-tag">&lt;link</span> <span class="c-at">rel</span>=<span class="c-vl">"stylesheet"</span> <span class="c-at">href</span>=<span class="c-vl">"style.css"</span><span class="c-tag">&gt;</span>
   <span class="c-tag">&lt;script</span> <span class="c-at">src</span>=<span class="c-vl">"script.js"</span> <span class="c-at">defer</span><span class="c-tag">&gt;&lt;/script&gt;</span>
 <span class="c-tag">&lt;/head&gt;</span>
- 
+
 <span class="c-tag">&lt;body&gt;</span>
   <span class="c-cm">&lt;!-- Innehåll här --&gt;</span>
 <span class="c-tag">&lt;/body&gt;</span>
- 
+
 <span class="c-tag">&lt;/html&gt;</span></pre></div>
       <div class="faktaruta">💡 <strong>defer</strong> = skriptet körs efter att hela HTML:en laddats klart.</div>
     </section>
- 
+
     <section class="kort" id="syntax">
       <h2>🔤 Syntax – Normal &amp; Void element</h2>
       <div class="tva-kol">
@@ -87,21 +87,112 @@
         </div>
       </div>
     </section>
- 
+
     <section class="kort" id="element">
-      <h2>🧱 Vanliga HTML-element</h2>
-      <div class="element-grid">
-        <div class="el-rad"><code>h1 h2 h3</code><span>Rubriker – h1 störst</span></div>
-        <div class="el-rad"><code>p</code><span>Stycke</span></div>
-        <div class="el-rad"><code>a</code><span>Länk – attribut: href</span></div>
-        <div class="el-rad"><code>ul ol li</code><span>Oordnad / ordnad lista</span></div>
-        <div class="el-rad"><code>table tr th td</code><span>Tabell / rad / rubrikcell / datacell</span></div>
-        <div class="el-rad"><code>img</code><span>Bild (void) – attribut: src, alt</span></div>
-        <div class="el-rad"><code>div</code><span>Block-behållare</span></div>
-        <div class="el-rad"><code>span</code><span>Inline-behållare</span></div>
-      </div>
-    </section>
- 
+        <h2>🧱 Vanliga HTML-element</h2>
+        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">Klicka på ett element för att se exempel.</p>
+        <div class="element-grid">
+      
+          <div class="el-rad" onclick="toggleEl(this)">
+            <code>h1 h2 h3</code><span>Rubriker – h1 störst</span><span class="el-pil">▾</span>
+            <div class="el-expandera">
+              <p>Används för rubriker. <code>h1</code> är störst och viktigast, <code>h3</code> minst.</p>
+              <pre>&lt;h1&gt;Stor rubrik&lt;/h1&gt;
+      &lt;h2&gt;Mellanrubrik&lt;/h2&gt;
+      &lt;h3&gt;Liten rubrik&lt;/h3&gt;</pre>
+            </div>
+          </div>
+      
+          <div class="el-rad" onclick="toggleEl(this)">
+            <code>p</code><span>Stycke</span><span class="el-pil">▾</span>
+            <div class="el-expandera">
+              <p>Används för vanliga textstycken. Webbläsaren lägger automatiskt till luft ovan och under.</p>
+              <pre>&lt;p&gt;Det här är ett stycke text.&lt;/p&gt;
+      &lt;p&gt;Det här är ett annat stycke.&lt;/p&gt;</pre>
+            </div>
+          </div>
+      
+          <div class="el-rad" onclick="toggleEl(this)">
+            <code>a</code><span>Länk – attribut: href</span><span class="el-pil">▾</span>
+            <div class="el-expandera">
+              <p><code>href</code> anger vart länken leder. Använd <code>target="_blank"</code> för att öppna i ny flik.</p>
+              <pre>&lt;a href="https://google.se"&gt;Gå till Google&lt;/a&gt;
+      
+      &lt;a href="https://google.se" target="_blank"&gt;
+        Öppna i ny flik
+      &lt;/a&gt;</pre>
+            </div>
+          </div>
+      
+          <div class="el-rad" onclick="toggleEl(this)">
+            <code>ul ol li</code><span>Oordnad / ordnad lista</span><span class="el-pil">▾</span>
+            <div class="el-expandera">
+              <p><code>ul</code> ger punktlista, <code>ol</code> ger numrerad lista. Varje punkt är ett <code>li</code>.</p>
+              <pre>&lt;ul&gt;
+        &lt;li&gt;Äpple&lt;/li&gt;
+        &lt;li&gt;Banan&lt;/li&gt;
+      &lt;/ul&gt;
+      
+      &lt;ol&gt;
+        &lt;li&gt;Första steget&lt;/li&gt;
+        &lt;li&gt;Andra steget&lt;/li&gt;
+      &lt;/ol&gt;</pre>
+            </div>
+          </div>
+      
+          <div class="el-rad" onclick="toggleEl(this)">
+            <code>table tr th td</code><span>Tabell / rad / rubrikcell / datacell</span><span class="el-pil">▾</span>
+            <div class="el-expandera">
+              <p><code>table</code> är behållaren. <code>tr</code> = rad. <code>th</code> = rubrikcell (fet). <code>td</code> = datacell.</p>
+              <pre>&lt;table&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Namn&lt;/th&gt;
+          &lt;th&gt;Ålder&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Anna&lt;/td&gt;
+          &lt;td&gt;17&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;</pre>
+            </div>
+          </div>
+      
+          <div class="el-rad" onclick="toggleEl(this)">
+            <code>img</code><span>Bild (void) – src, alt</span><span class="el-pil">▾</span>
+            <div class="el-expandera">
+              <p>Void element – ingen sluttagg! <code>src</code> = sökväg till bilden. <code>alt</code> = beskrivning (viktigt för tillgänglighet).</p>
+              <pre>&lt;img src="images/katt.jpg" alt="En söt katt"&gt;
+      
+      &lt;!-- Från webben: --&gt;
+      &lt;img src="https://example.com/bild.png" alt="Beskrivning"&gt;</pre>
+            </div>
+          </div>
+      
+          <div class="el-rad" onclick="toggleEl(this)">
+            <code>div</code><span>Block-behållare</span><span class="el-pil">▾</span>
+            <div class="el-expandera">
+              <p>Generisk block-behållare utan semantisk betydelse. Tar hela bredden. Används för att gruppera och styla element.</p>
+              <pre>&lt;div class="kort"&gt;
+        &lt;h2&gt;Rubrik&lt;/h2&gt;
+        &lt;p&gt;Text inuti en div.&lt;/p&gt;
+      &lt;/div&gt;</pre>
+            </div>
+          </div>
+      
+          <div class="el-rad" onclick="toggleEl(this)">
+            <code>span</code><span>Inline-behållare</span><span class="el-pil">▾</span>
+            <div class="el-expandera">
+              <p>Generisk inline-behållare. Stannar i texten. Används för att styla delar av text utan att bryta radflödet.</p>
+              <pre>&lt;p&gt;Det här är
+        &lt;span style="color:red"&gt;röd text&lt;/span&gt;
+        mitt i ett stycke.
+      &lt;/p&gt;</pre>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+
     <section class="kort" id="entiteter">
       <h2>🔒 HTML-entiteter</h2>
       <table class="enkel-tabell">
@@ -111,7 +202,7 @@
         <tr><td>&amp;</td><td><code>&amp;amp;</code></td><td>Startar en entitet</td></tr>
       </table>
     </section>
- 
+
     <section class="kort" id="css-syntax">
       <h2>🎨 CSS-syntax</h2>
       <div class="kodblock"><pre><span class="c-sel">h1</span><span class="c-tag">,</span> <span class="c-sel">.rubrik</span> <span class="c-tag">{</span>
@@ -125,7 +216,7 @@
         <li><strong>Shorthand</strong> – t.ex. <code>margin: 10px 20px</code> = topp/botten | vänster/höger</li>
       </ul>
     </section>
- 
+
     <section class="kort" id="selektorer">
       <h2>🎯 Selektorer</h2>
       <div class="kodblock"><pre><span class="c-sel">p</span> { }
@@ -138,7 +229,7 @@
 <span class="c-sel">h1 ~ p</span> { }</pre></div>
       <p>Flera klasser på samma element: <code>&lt;div class="kort stor aktiv"&gt;</code></p>
     </section>
- 
+
     <section class="kort" id="specificitet">
       <h2>⚖️ Specificitet &amp; Kaskaden</h2>
       <p>När regler krockar vinner den med <strong>högst specificitet</strong>:</p>
@@ -149,33 +240,179 @@
       </div>
       <p>Lika specificitet → <strong>sist i koden vinner</strong>.</p>
     </section>
- 
+
     <section class="kort" id="pseudo">
-      <h2>🔮 Pseudoklasser &amp; Pseudoelement</h2>
-      <div class="tva-kol">
-        <div>
-          <h3>Pseudoklasser <code>:</code></h3>
-          <div class="kodblock"><pre><span class="c-sel">li:nth-child(2)</span> { }
-<span class="c-sel">li:nth-last-child(1)</span> { }
-<span class="c-sel">p:nth-of-type(odd)</span> { }
-<span class="c-sel">p:nth-last-of-type(2)</span> { }
-<span class="c-sel">p:not(.intro)</span> { }
-<span class="c-sel">:is(h1, h2, h3)</span> { }
-<span class="c-sel">div:has(img)</span> { }</pre></div>
+        <h2>🔮 Pseudoklasser &amp; Pseudoelement</h2>
+        <div class="tva-kol">
+      
+          <div>
+            <h3>Pseudoklasser <code>:</code></h3>
+            <div class="element-grid">
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>:nth-child(n)</code><span>N:te barnet</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Väljer det n:te barnet oavsett elementtyp. Kan använda siffror, <code>odd</code>, <code>even</code> eller formler som <code>2n+1</code>.</p>
+                  <pre>li:nth-child(2) { color: red; }
+      /* Väljer den andra &lt;li&gt; */
+      
+      li:nth-child(odd) { background: #eee; }
+      /* Väljer 1:a, 3:e, 5:e... */
+      
+      li:nth-child(2n) { background: #ccc; }
+      /* Väljer varannan (2, 4, 6...) */</pre>
+                </div>
+              </div>
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>:nth-last-child(n)</code><span>N:te barnet bakifrån</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Som <code>:nth-child</code> men räknar bakifrån. <code>(1)</code> = sista barnet.</p>
+                  <pre>li:nth-last-child(1) { font-weight: bold; }
+      /* Väljer sista &lt;li&gt; */
+      
+      li:nth-last-child(2) { color: blue; }
+      /* Väljer näst sista */</pre>
+                </div>
+              </div>
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>:nth-of-type(n)</code><span>N:te av sin typ</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Väljer det n:te elementet av en specifik typ – ignorerar syskon av andra typer.</p>
+                  <pre>p:nth-of-type(odd) { background: #f0f0f0; }
+      /* Varannan &lt;p&gt;, börjar på 1:a */
+      
+      p:nth-of-type(2) { color: green; }
+      /* Bara den andra &lt;p&gt; */</pre>
+                </div>
+              </div>
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>:nth-last-of-type(n)</code><span>N:te av sin typ bakifrån</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Som <code>:nth-of-type</code> men räknar bakifrån.</p>
+                  <pre>p:nth-last-of-type(1) { font-style: italic; }
+      /* Sista &lt;p&gt; */
+      
+      p:nth-last-of-type(2) { color: purple; }
+      /* Näst sista &lt;p&gt; */</pre>
+                </div>
+              </div>
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>:not(selector)</code><span>Inte dessa</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Väljer alla element som <strong>inte</strong> matchar selektorn inuti. Mycket användbart för undantag.</p>
+                  <pre>p:not(.intro) { color: gray; }
+      /* Alla &lt;p&gt; UTOM de med klassen .intro */
+      
+      li:not(:last-child) { border-bottom: 1px solid #ccc; }
+      /* Alla &lt;li&gt; utom den sista */</pre>
+                </div>
+              </div>
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>:is()</code><span>Är någon av dessa</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Matchar vilket element som helst i listan. Förkortar långa selektorer.</p>
+                  <pre>:is(h1, h2, h3) { color: navy; }
+      /* Istället för: h1, h2, h3 { } */
+      
+      :is(ul, ol) li { margin: 0.5rem 0; }
+      /* Alla &lt;li&gt; i både &lt;ul&gt; och &lt;ol&gt; */</pre>
+                </div>
+              </div>
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>:has()</code><span>Har detta barn</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Väljer ett element om det <strong>innehåller</strong> ett visst element. Kallas ibland "föräldra-selektor".</p>
+                  <pre>div:has(img) { border: 2px solid gold; }
+      /* Alla &lt;div&gt; som innehåller en &lt;img&gt; */
+      
+      p:has(+ ul) { margin-bottom: 0; }
+      /* &lt;p&gt; som följs direkt av en &lt;ul&gt; */</pre>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+      
+          <div>
+            <h3>Pseudoelement <code>::</code></h3>
+            <div class="element-grid">
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>::first-letter</code><span>Första tecknet</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Stilsätter bara det allra första tecknet i ett element. Klassiskt för dekorativa dropp-caps.</p>
+                  <pre>p::first-letter {
+        font-size: 2.5rem;
+        font-weight: bold;
+        float: left;
+        line-height: 1;
+        margin-right: 4px;
+        color: darkred;
+      }</pre>
+                </div>
+              </div>
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>::before</code><span>Lägg till innan</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Lägger till genererat innehåll <strong>precis innan</strong> elementets innehåll. Kräver alltid <code>content</code>-egenskapen.</p>
+                  <pre>.kort::before {
+        content: "→ ";
+        color: gold;
+      }
+      
+      /* Med ikon */
+      .varning::before {
+        content: "⚠️ ";
+      }
+      
+      /* Tom – men används för styling */
+      .linje::before {
+        content: "";
+        display: block;
+        height: 2px;
+        background: red;
+      }</pre>
+                </div>
+              </div>
+      
+              <div class="el-rad" onclick="toggleEl(this)">
+                <code>::after</code><span>Lägg till efter</span><span class="el-pil">▾</span>
+                <div class="el-expandera">
+                  <p>Lägger till genererat innehåll <strong>precis efter</strong> elementets innehåll. Kräver <code>content</code>.</p>
+                  <pre>.kort::after {
+        content: " ←";
+        color: gold;
+      }
+      
+      /* Visa länkens URL efter texten */
+      a::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: gray;
+      }
+      
+      /* Clearfix-trick */
+      .container::after {
+        content: "";
+        display: block;
+        clear: both;
+      }</pre>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+      
         </div>
-        <div>
-          <h3>Pseudoelement <code>::</code></h3>
-          <div class="kodblock"><pre><span class="c-sel">p::first-letter</span> { }
-<span class="c-sel">.kort::before</span> {
-  content: <span class="c-vl">"→ "</span>;
-}
-<span class="c-sel">.kort::after</span> {
-  content: <span class="c-vl">" ←"</span>;
-}</pre></div>
-        </div>
-      </div>
-    </section>
- 
+      </section>
+
     <section class="kort" id="block-inline">
       <h2>📦 Block vs Inline</h2>
       <div class="tva-kol">
@@ -191,7 +428,7 @@
         </div>
       </div>
     </section>
- 
+
     <section class="kort" id="boxmodell">
       <h2>📐 Boxmodellen</h2>
       <div class="box-wrap">
@@ -211,7 +448,7 @@
   <span class="c-at">box-sizing</span>: <span class="c-vl">border-box</span>;
 }</pre></div>
     </section>
- 
+
     <section class="kort" id="css-variabler">
       <h2>🎛️ CSS-variabler</h2>
       <div class="kodblock"><pre><span class="c-sel">:root</span> {
@@ -223,7 +460,7 @@
   <span class="c-at">padding</span>: <span class="c-vl">var(--avstånd)</span>;
 }</pre></div>
     </section>
- 
+
     <section class="kort" id="formular">
       <h2>📝 Formulär &amp; JavaScript</h2>
       <div class="tva-kol">
@@ -255,40 +492,40 @@ btn.addEventListener(<span class="c-vl">"click"</span>, () =&gt; { });
         </div>
       </div>
     </section>
- 
+
     <div class="ova-cta">
       <p>Klar med teorin? Dags att testa!</p>
       <button class="stor-knapp" onclick="visaSektion('ova')">🎯 Börja Öva</button>
     </div>
- 
+
   </main>
- 
+
   <!-- ═══════════════════ ÖVNINGSDEL ═══════════════════ -->
   <main id="sektion-ova" class="sektion">
- 
+
     <div class="hero">
       <h1>Öva inför provet</h1>
       <p>Fråga <span id="fraga-nr">1</span> av <span id="total-fragor">–</span></p>
       <div class="progress-bar"><div id="progress-fill"></div></div>
     </div>
- 
+
     <div id="fraga-container" class="kort fraga-kort">
       <span id="fraga-kategori" class="kategori-badge"></span>
       <h2 id="fraga-text"></h2>
       <div id="fraga-hint" class="hint"></div>
- 
+
       <div id="svar-area">
         <input type="text" id="svar-input" placeholder="Skriv ditt svar här…" autocomplete="off" />
         <button id="kolla-btn" onclick="kollaSvar()">Kolla ✓</button>
       </div>
- 
+
       <div id="feedback-box" class="dold">
         <p id="feedback-rubrik"></p>
         <p id="feedback-text"></p>
         <button id="nasta-btn" onclick="nastaFraga()">Nästa fråga →</button>
       </div>
     </div>
- 
+
     <div id="klar-box" class="kort dold klar-kort">
       <div class="klar-emoji">🎉</div>
       <h2>Du är klar!</h2>
@@ -296,12 +533,12 @@ btn.addEventListener(<span class="c-vl">"click"</span>, () =&gt; { });
       <button class="stor-knapp" onclick="startaOm()">Kör igen 🔄</button>
       <button class="stor-knapp sekunder" onclick="visaSektion('teori')">📖 Tillbaka till teori</button>
     </div>
- 
+
   </main>
- 
+
   <footer>
     <p>Webb101 &mdash; Lycka till på provet! 💪</p>
   </footer>
- 
+
 </body>
 </html>
