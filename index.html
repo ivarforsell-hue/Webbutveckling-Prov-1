@@ -512,7 +512,10 @@ btn.addEventListener(<span class="c-vl">"click"</span>, () =&gt; { });
     <div id="fraga-container" class="kort fraga-kort">
       <span id="fraga-kategori" class="kategori-badge"></span>
       <h2 id="fraga-text"></h2>
-      <div id="fraga-hint" class="hint"></div>
+      <div id="hint-area">
+  <button id="hint-btn" onclick="visaHint()">💡 Visa ledtråd</button>
+  <div id="fraga-hint" class="hint dold"></div>
+</div>
 
       <div id="svar-area">
         <input type="text" id="svar-input" placeholder="Skriv ditt svar här…" autocomplete="off" />
