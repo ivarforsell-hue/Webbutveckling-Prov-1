@@ -489,3 +489,17 @@ footer {
     color: var(--text);
     line-height: 1.65;
   }
+#hint-btn {
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 0.5rem;
+}
+#hint-btn:hover { border-color: var(--accent); color: var(--accent); }
+#hint-btn.dold { display: none; }
